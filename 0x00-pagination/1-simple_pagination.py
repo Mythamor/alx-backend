@@ -41,7 +41,7 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        that takes two integer arguments page with default value 1 
+        that takes two integer arguments page with default value 1
         and page_size with default value 10.
         """
         # Read csv file
