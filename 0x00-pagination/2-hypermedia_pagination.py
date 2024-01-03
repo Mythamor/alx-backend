@@ -59,7 +59,9 @@ class Server:
         return dataset[start_index: end_index]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
-
+        """
+        A function that returns dataset and pagination details
+        """
         data = self.dataset()
 
         total_pages = math.ceil(len(data) / page_size)
