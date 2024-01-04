@@ -12,6 +12,9 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 
 class LFUCache(BaseCaching):
+    """
+    class LFUCache that inherits from BaseCaching and is a caching system
+    """
     def __init__(self):
         super().__init__()
         # Dictionary to store frequency of each key
