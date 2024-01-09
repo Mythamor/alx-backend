@@ -9,9 +9,6 @@ from flask_babel import Babel
 from datetime import datetime, timezone
 
 
-app = Flask(__name__)
-
-
 class Config:
     """
     Set up app defaults
@@ -20,14 +17,19 @@ class Config:
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
-    def get_locale():
-        """
-        Get locale from request
-        """
-        return request.accept_languages.best_match(app.config["LANGUAGES"])
+
+# Coinfigure the flask app
+app = Flask(__name)
+app.config.from_object(Config)
+babel = Babel(app)
 
 
-babel = Babel(app, locale_selector=Config.get_locale)
+@babel.localeselector
+def get_locale():
+    """
+    Get locale from request
+    """
+    return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
 @app.route('/')
