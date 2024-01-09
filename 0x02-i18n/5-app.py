@@ -32,6 +32,7 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 def get_user():
     """
     Get user from the dict above
@@ -43,7 +44,7 @@ def get_user():
 
 
 @app.before_request
-def before_request():
+def before_request() -> None:
     """
     To be executed before all other functions
     """
@@ -68,7 +69,7 @@ def index():
     """
     Home page view
     """
-    return render_template('4-index.html', title='Welcome to Holberton')
+    return render_template('5-index.html', title='Welcome to Holberton')
 
 
 if __name__ == '__main__':
