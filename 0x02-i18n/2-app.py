@@ -9,6 +9,11 @@ from flask_babel import Babel
 from datetime import datetime, timezone
 
 
+# Coinfigure the flask app
+app = Flask(__name__)
+babel = Babel(app)
+
+
 class Config:
     """
     Set up app defaults
@@ -18,10 +23,7 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-# Coinfigure the flask app
-app = Flask(__name)
 app.config.from_object(Config)
-babel = Babel(app)
 
 
 @babel.localeselector
