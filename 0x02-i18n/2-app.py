@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Module: 1-app
+Module: 2-app
 """
 
 from flask import Flask, render_template, request
@@ -21,6 +21,9 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
     def get_locale():
+        """
+        Get locale from request
+        """
         return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
@@ -32,7 +35,7 @@ def index():
     """
     Home page view
     """
-    return render_template('1-index.html', title='Welcome to Holberton')
+    return render_template('2-index.html', title='Welcome to Holberton')
 
 
 if __name__ == '__main__':
