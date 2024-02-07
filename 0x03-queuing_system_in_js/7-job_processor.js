@@ -10,8 +10,10 @@ function sendNotification(phoneNumber, message, job, done) {
   // Check if the number is blacklisted
   if (blacklistedNumbers.includes(phoneNumber)) {
     const errorMessage = `Phone number ${phoneNumber} is blacklisted`;
-    job.failed(errorMessage);
-    done(new Error(errorMessage));
+    job.on('failed', (errorMessage) => {
+       console.log(errorMessage)
+       return done(new Error(errorMessage));
+    });
   } else {
    // Update progress to 50%
    job.progress(50);
